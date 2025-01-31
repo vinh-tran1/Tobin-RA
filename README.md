@@ -8,6 +8,60 @@ This project focuses on applying computer vision and OCR (Optical Character Reco
 
 We will leverages traditional OCR methods, augmented by an understanding of the underlying algorithm and data structure, to accurately read and interpret the printed output. The ultimate goal is to replicate the data-generating code and improve data collection efficiency. This project will explore the intersection of computer vision and economic theory, offering a novel approach to reverse engineering historical matching algorithms.
 
+## Set Up
+
+For OCR, we are using the Tesseract OCR engine. This is how to install on Mac:
+
+```bash
+# install
+$ brew install tesseract
+
+# check version
+$ tesseract --version
+
+# check path: '/usr/local/bin/tesseract'
+$ which tesseract
+```
+
+Because these documents are in Spanish, we must download the Spanish model for Tesseract:
+
+```bash
+# check languages
+$ tesseract --list-langs
+
+# if there is not spa (Spanish) we must install
+$ mkdir -p /usr/local/share/tessdata  # ensure tessdata directory exists
+$ cd /usr/local/share/tessdata
+$ wget https://github.com/tesseract-ocr/tessdata_best/raw/main/spa.traineddata
+
+# re verify
+$ tesseract --list-langs
+
+```
+
+## How to Run Scripts
+
+**Note: it is recommended to use a virtual environment for python**
+
+```bash
+# activate
+$ python3 -m venv .venv
+$ source .venv/bin/activate
+
+# deactivate
+$ deactivate
+```
+
+```bash
+# install dependencies
+$ pip install -r requirements.txt
+
+# go to scripts folder
+$ cd scripts
+
+# run python file
+$ python ocr.py
+```
 
 ## Contributors
 
